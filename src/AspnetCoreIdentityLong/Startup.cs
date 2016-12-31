@@ -43,8 +43,9 @@ namespace AspnetCoreIdentityLong
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddRoleStore<ApplicationRoleStore>()
+                .AddUserStore<ApplicationUserStore>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
