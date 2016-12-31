@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{24BDDD81-50DB-4DEA-A465-794F8AD9EE4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3384E299-69FE-40C2-91A6-802555A9D0CC}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspnetCoreIdentityLong", "src\AspnetCoreIdentityLong\AspnetCoreIdentityLong.xproj", "{D955BA32-A755-4C5D-83E3-8EA4216AB65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D955BA32-A755-4C5D-83E3-8EA4216AB65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D955BA32-A755-4C5D-83E3-8EA4216AB65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D955BA32-A755-4C5D-83E3-8EA4216AB65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D955BA32-A755-4C5D-83E3-8EA4216AB65F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D955BA32-A755-4C5D-83E3-8EA4216AB65F} = {24BDDD81-50DB-4DEA-A465-794F8AD9EE4D}
+	EndGlobalSection
+EndGlobal
