@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace AspnetCoreIdentityLong.Models
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
-    public class ApplicationUser : IdentityUser<long, IdentityUserClaim<long>, ApplicationUserRole, IdentityUserLogin<long>>
+    public class ApplicationUser : IdentityUser<long>
     {
     }
 }

@@ -8,7 +8,7 @@ using AspnetCoreIdentityLong.Data;
 namespace AspnetCoreIdentityLong.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161231200753_CreateIdentitySchema")]
+    [Migration("20170104065905_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,28 +16,6 @@ namespace AspnetCoreIdentityLong.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("AspnetCoreIdentityLong.Models.ApplicationRole", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Name")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.Property<string>("NormalizedName")
-                        .HasAnnotation("MaxLength", 256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .HasName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles");
-                });
 
             modelBuilder.Entity("AspnetCoreIdentityLong.Models.ApplicationUser", b =>
                 {
@@ -89,19 +67,26 @@ namespace AspnetCoreIdentityLong.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("AspnetCoreIdentityLong.Models.ApplicationUserRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole<long>", b =>
                 {
-                    b.Property<long>("UserId");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<long>("RoleId");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
-                    b.HasKey("UserId", "RoleId");
+                    b.Property<string>("Name")
+                        .HasAnnotation("MaxLength", 256);
 
-                    b.HasIndex("RoleId");
+                    b.Property<string>("NormalizedName")
+                        .HasAnnotation("MaxLength", 256);
 
-                    b.HasIndex("UserId");
+                    b.HasKey("Id");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.HasIndex("NormalizedName")
+                        .HasName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<long>", b =>
@@ -157,6 +142,21 @@ namespace AspnetCoreIdentityLong.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<long>", b =>
+                {
+                    b.Property<long>("UserId");
+
+                    b.Property<long>("RoleId");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserToken<long>", b =>
                 {
                     b.Property<long>("UserId");
@@ -172,22 +172,9 @@ namespace AspnetCoreIdentityLong.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("AspnetCoreIdentityLong.Models.ApplicationUserRole", b =>
-                {
-                    b.HasOne("AspnetCoreIdentityLong.Models.ApplicationRole")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("AspnetCoreIdentityLong.Models.ApplicationUser")
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<long>", b =>
                 {
-                    b.HasOne("AspnetCoreIdentityLong.Models.ApplicationRole")
+                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole<long>")
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -205,6 +192,19 @@ namespace AspnetCoreIdentityLong.Migrations
                 {
                     b.HasOne("AspnetCoreIdentityLong.Models.ApplicationUser")
                         .WithMany("Logins")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<long>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole<long>")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AspnetCoreIdentityLong.Models.ApplicationUser")
+                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AspnetCoreIdentityLong.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long, IdentityUserClaim<long>, ApplicationUserRole, IdentityUserLogin<long>, IdentityRoleClaim<long>, IdentityUserToken<long>>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<long>, long>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
